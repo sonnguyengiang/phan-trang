@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<h1>create student</h1>
+<form method="post" th:object="${edit}">
+  <table>
+    <tbody>
+    <tr>
+      <th>Name</th>
+      <td><input type="text" th:field="*{name}">
+        <span style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></td>
+    </tr>
+    <tr>
+      <th>Date of Birth</th>
+      <td><input type="date" th:field="*{date}">
+        <span style="color: red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span></td>
+    </tr>
+    <tr>
+      <th>phone number</th>
+      <td><input type="text" th:field="*{phoneNumber}">
+        <span style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span></td>
+      </td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td><input type="text" th:field="*{address}">
+        <span style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span></td>
+      </td>
+    </tr>
+    <th>Class</th>
+    <td><select th:field="*{classRoom}">
+      <option th:each="class :${classList}" th:value="${class.id_class}" th:text="${class.nameClass}"></option>
+    </select></td>
+    </tr>
+    </tbody>
+  </table>
+  <button type="submit" class="btn btn-success">edit</button>
+  <a href="/home" class="btn btn-primary">Cancel</a>
+</form>
+</body>
+</html>
