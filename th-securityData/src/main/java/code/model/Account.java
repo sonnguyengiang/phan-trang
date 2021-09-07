@@ -1,6 +1,9 @@
 package code.model;
 
+import org.hibernate.annotations.Columns;
+
 import javax.persistence.*;
+import javax.validation.groups.Default;
 
 @Entity
 public class Account {

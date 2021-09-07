@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/layout :: header">
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
-<h1>home</h1>
-<div th:each="c, loop : ${home}">
-    <p th:text="${c.name}"></p>
-    <p th:text="${c.address}"></p>
+                           <!--header-->
+<div th:object="${getUser}">
+    <div class="nav">
+        <a th:href="@{/personal}" class="logo" th:text="*{name}"></a>
+        <ul class="menu">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/friendList">App new friend</a></li>
+            <li class="menu_link">
+                <a href="#">notification</a>
+                <ul class="menu_down">
+                    <li th:each="c, loop: ${list}">
+                        <a th:text="${c.account.id_account}"></a><a th:href="@{/yes/{id_list}(id_list = ${c.id})}"> yes</a><a th:href="@{/no/{id_list}(id_list = ${c.id})}"> cancel</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="/logout">logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div th:each="c, lôp : ${list}">
+    <h2 th:text="${c.id}"></h2>
+    <p th:text="${c.account.id_account}"></p>
 </div>
 </body>
 </html>

@@ -21,6 +21,21 @@ public class AccountServices implements IAccountServices{
 
     @Override
     public Account findById(long id) {
+        return iAccountRepo.findById(id).get();
+    }
+
+    @Override
+    public Account findByUsername(String username) {
+        return iAccountRepo.findByUsernameContaining(username);
+    }
+
+    @Override
+    public long findIdByUsername(String username) {
+        return iAccountRepo.findIdByUsername(username);
+    }
+
+    @Override
+    public ArrayList<Account> findNonFriend() {
         return null;
     }
 }

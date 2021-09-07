@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>home</h1>
+<div th:each="c, loop : ${home}" id="father">
+    <table th:id="${c.id_account}">
+        <tr>
+            <th>Name</th>
+            <td th:text="${c.name}"></td>
+            <th>Address</th>
+            <td th:text="${c.address}"></td>
+        </tr>
+        <tr>
+            <td>
+                <a th:href="@{/detail/{id}(id = ${c.id_account})}">detail</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<p th:id="${user1}" id="acc" hidden></p>
+</body>
+<script>
+    var phanTuCon = document.getElementById("acc").innerHTML;
+    alert(phanTuCon);
+    // phanTuCon.parentNode.removeChild();
+</script>
+</html>
